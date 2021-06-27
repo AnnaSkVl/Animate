@@ -1,0 +1,231 @@
+.text{
+    text-align: center;
+    margin: 50px 0;
+    font-size: 24px;
+    font-family: sans-serif;
+}
+
+.text_1{
+    animation-name: anim-1;
+    animation-duration: .5s;
+}
+
+.text_2{
+    animation-name: anim-2;
+    animation-duration: 2s;
+    animation-delay: 3s;
+    animation-iteration-count: 3;
+    animation-direction: alternate;
+}
+
+.text_3{
+    margin-top: 100px;
+    animation-name: bounceInDown;
+    animation-name: anim-3;
+    animation-duration: 5s;
+    animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+    
+}
+
+
+@keyframes anim-1{
+    0%{
+        transform: translateX(-3000px);
+    }
+
+    50%{
+        transform: translateX(200px);
+    }
+
+    100%{
+        transform: translateX(0);
+    }
+
+}
+
+@keyframes anim-2{
+    0%{
+        transform: scale(1);
+    }
+
+    100%{
+        transform: scale(3);
+    }
+
+}
+
+@keyframes anim-3{
+    0%{
+        transform: translateY(-3000px);
+    }
+
+    60%{
+        transform: translateY(50px);
+    }
+
+    80%{
+        transform: translateY(-20px);
+    }
+
+    90%{
+        transform: translateY(5px);
+    }
+
+    100%{
+        transform: translateY(0);
+    }
+
+}
+
+.move{
+    width: 640px;
+    height: 400px;
+    background-color: rgb(189, 28, 103);
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+    
+}
+
+.move__title{
+    position: absolute;
+    bottom: 20px;
+    left: 30px;
+    font-size: 24px;
+    color: #fff;
+}
+
+.move-img{
+    animation-name: move-off;
+    animation-duration: 1s;
+    animation-timing-function: ease-out;
+}
+
+.move:hover .move-img{
+    animation-name: move-on;
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.move::after, .move::before{
+    content: "";
+    width: 300px;
+    height: 300px;
+    position: absolute;
+    animation-duration: 1s;
+}
+
+
+.move::after{
+    background-image: url(../img/iphone-front.png);
+    right: 20%;
+    transform: translate(0, 200%) rotate(20deg);
+    animation-name: front-off;
+}
+
+.move::before{
+    background-image: url(../img/iphone-back.png);
+    left: 20%;
+    transform: translate(0, 200%) rotate(20deg);
+    animation-name: back-on;
+}
+.move:hover::after,
+.move:hover::before{
+    animation-duration: 1s;
+    animation-fill-mode: forwards;
+}
+
+.move:hover::after{
+    animation-name: front-on;
+}
+
+.move:hover::before{
+    animation-name: back-on;
+}
+
+@keyframes move-on{
+    0%{
+        transform: translateY(0);
+    }
+    100%
+    {
+        transform: translateY(-200%);
+    }
+
+}
+
+@keyframes move-off{
+    0%{
+        transform: translateY(-200%);
+    }
+    60%
+    {
+        transform: translateY(30px);
+    }
+    70%{
+        transform: translateY(-20px);
+    }
+    80%{
+        transform: translateY(15px);
+    }
+    90%{
+        transform: translateY(-10px);
+    }
+    100%{
+        transform: translateY(0);
+    }
+}
+
+@keyframes front-on{
+    0%{
+    right: 20%;
+    transform: translate(0, 200%) rotate(20deg);
+    }
+    60%{
+    transform: translate(0, 0) rotate(0deg);  
+    right: 20%; 
+    }
+    100%{
+    transform: translate(0, 0) rotate(0deg);
+    right: 30%; 
+    }
+    }
+
+
+ @keyframes front-off{
+        0%{
+        transform: translate(0, 0) rotate(0deg);
+        }
+        100%{
+        right: 20%;
+        transform: translate(0, 200%) rotate(20deg);
+        }
+    }
+
+@keyframes back-on{
+    0%{
+    left: 20%;
+    transform: translate(0, 200%) rotate(20deg);
+    }
+    60%{
+    transform: translate(0, 0) rotate(0deg);  
+    }
+    100%{
+    transform: translate(0, 0) rotate(0deg);   
+    left: 30%;
+    }
+}
+
+@keyframes back-off{
+    0%{
+    transform: translate(0, 0) rotate(0deg); 
+    }
+    100%{
+    left: 20%;
+    transform: translate(0, 200%) rotate(20deg);  
+    }
+}
